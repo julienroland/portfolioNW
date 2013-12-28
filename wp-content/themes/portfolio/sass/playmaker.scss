@@ -1,0 +1,63 @@
+/*================================================
+=            Import Foundation styles            =
+================================================*/
+
+  // Global Foundation Settings
+  @import "app.scss";
+  @import "ie-8-fix.scss";
+  /*-----  End of Import Foundation styles  ------*/
+
+/*================================================
+=            Playmaker Specific stuff            =
+================================================*/
+
+  #sidebar li {list-style: none;}
+
+/*-----  End of Playmaker Specific stuff  ------*/
+
+/*==========================================
+=            Wordpress Comments            =
+==========================================*/
+
+  ol.commentlist {list-style: none;}
+  ol.commentlist li {}
+  ol.commentlist li.alt {}
+  ol.commentlist li.bypostauthor {}
+  ol.commentlist li.byuser {}
+  ol.commentlist li.comment-author-admin {}
+  ol.commentlist li.comment {border-bottom: 1px solid #ccc; padding: 10px;}
+  ol.commentlist li.comment div.comment-author {}
+  ol.commentlist li.comment div.vcard { display: block; margin: 0; border: none; padding: 0; }
+  ol.commentlist li.comment div.vcard cite.fn {font-style: normal;}
+  ol.commentlist li.comment div.vcard cite.fn a.url {}
+  ol.commentlist li.comment div.vcard img.avatar {float:right; margin: 0 0 10px 10px;}
+  ol.commentlist li.comment div.vcard img.avatar-32 {}
+  ol.commentlist li.comment div.vcard img.photo {}
+  ol.commentlist li.comment div.vcard span.says {}
+  ol.commentlist li.comment div.commentmetadata {}
+  ol.commentlist li.comment div.comment-meta {font-size: 10px;}
+  ol.commentlist li.comment div.comment-meta a {color: #ccc;}
+  ol.commentlist li.comment p {}
+  ol.commentlist li.comment ul {}
+  ol.commentlist li.comment div.reply {font-size: 11px;}
+  ol.commentlist li.comment div.reply a {font-weight: bold;}
+  ol.commentlist li.comment ul.children {list-style: none; margin: 10px 0 0;}
+  ol.commentlist li.comment ul.children li {}
+  ol.commentlist li.comment ul.children li.alt {}
+  ol.commentlist li.comment ul.children li.bypostauthor {}
+  ol.commentlist li.comment ul.children li.byuser {}
+  ol.commentlist li.comment ul.children li.comment {}
+  ol.commentlist li.comment ul.children li.comment-author-admin {}
+  ol.commentlist li.comment ul.children li.depth-2 {border-left: 5px solid lighten( $primary-color, 40% ); border-bottom: 1px solid lighten( $primary-color, 40%); margin: 0 0 10px 10px;}
+  ol.commentlist li.comment ul.children li.depth-3 {border-left: 5px solid lighten( $primary-color, 30% ); border-bottom: 1px solid lighten( $primary-color, 30%); margin: 0 0 10px 10px;}
+  ol.commentlist li.comment ul.children li.depth-4 {border-left: 5px solid lighten( $primary-color, 20% ); border-bottom: 1px solid lighten( $primary-color, 20%); margin: 0 0 10px 10px;}
+  ol.commentlist li.comment ul.children li.depth-5 {border-left: 5px solid lighten( $primary-color, 10% ); border-bottom: 1px solid lighten( $primary-color, 10%); margin: 0 0 10px 10px;}
+  ol.commentlist li.comment ul.children li.odd {}
+  ol.commentlist li.even {background: #fff;}
+  ol.commentlist li.odd {background: #f4f4f4;}
+  ol.commentlist li.parent {border-left: 5px solid lighten( $primary-color, 50% );}
+  ol.commentlist li.thread-alt {}
+  ol.commentlist li.thread-even {}
+  ol.commentlist li.thread-odd {}
+
+/*-----  End of Wordpress Comments  ------*/
