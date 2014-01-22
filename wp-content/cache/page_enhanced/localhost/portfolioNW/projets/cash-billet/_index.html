@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head><link rel="stylesheet" type="text/css" href="http://localhost/portfolioNW/wp-content/cache/minify/000000/M9AvyC8qScvPycz3008uLtbPyy_KTczJrErVMUCXKk4uSk3NwxRPy88r0U0sTy3Oz03Vy83EoiIxLzM3sSQVAA.css" media="all" />
+<script type="text/javascript" src="http://localhost/portfolioNW/wp-content/cache/minify/000000/ZY1LDoMwDAUvRO2QRY_ROwQwqSMnTh1AtKfvR6zo8o30ZhxWtWVWYb1harhRmdQw60RW-GUXD1fwkLl0iCGFHaJqFAqVG4yafwyFh4bpsZI9sYfegT_W9wipde6UqbJGLv88h0_oDA_VnaoMur8B.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title> | Cash Billet</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="  Cash Billet - Portfolio">
+                               <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+                               
+                               
+                               
+                               
+                               
+                           </head> 
+                           <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]--><h1 aria-level="1" role="heading" class="section">Présentation de mon projet: .</h1>
+<nav role="navigation" class="menu">
+    <a href="#main" class="reader" title="Aller directement au contenu">Passer directement au contenu</a>
+    <h2 aria-level="2" role="heading" class="section">Barre de navigation principal du site</h2>
+   <div class="menu-main-container"><ul id="menu-main" class="menu"><li><a href="http://localhost/portfolioNW/"title="Aller sur cette page"><span>Accueil</span><i class="logo"></i></a></li>
+<li><a href="http://localhost/portfolioNW/blog/"title="Aller sur cette page"><span>Blog</span><i class="fa fa-comments"></i></a></li>
+<li><a href="http://localhost/portfolioNW/projet/"title="Aller sur cette page"><span>Projets</span><i class="fa fa-folder"></i></a></li>
+<li><a href="http://localhost/portfolioNW/a-propos/"title="Aller sur cette page"><span>A propos</span><i class="fa fa-user"></i></a></li>
+<li><a href="http://localhost/portfolioNW/contact/"title="Aller sur cette page"><span>Contact</span><i class="fa fa-envelope"></i></a></li>
+</ul></div></nav>
+
+
+<section role="main" id="main" class="main">
+    <h2 aria-level="2" role="heading" class="section">Partie principale de la page</h3>
+               <section class="projet wrapper" itemscope itemtype="http://schema.org/Article">
+            <div class="headerProjet">
+                <h3 itemprop="name" aria-level="3" role="heading">Cash Billet</h4>
+                    <span class="projetLive"><a href="http://julien-roland.be/cashcash">Voir le projet</a></span>
+                </div>
+                
+                <h4><a style="font-size: 1em;" class="thumbnail" href="http://localhost/portfolioNW/wp-content/uploads/2014/01/intro.jpg"</a><img class="alignnone size-full wp-image-129" alt="intro" src="http://localhost/portfolioNW/wp-content/uploads/2014/01/intro.jpg" /></a>Introduction</h4>
+<p>Le projet a pour but de réaliser une application web semblable à <a href="http://cash-cache.be">Cash Cache</a> et en se basant sur l&rsquo;API de celui-ci.</p>
+<p><a class="thumbnail" href="http://localhost/portfolioNW/wp-content/uploads/2014/01/cashcache.jpg"</a><img class="alignnone size-full wp-image-97" alt="Photo de l'application cash cache" src="http://localhost/portfolioNW/wp-content/uploads/2014/01/cashcache.jpg" /></a></p>
+<p>Le projet fait partie du cours de R.I.A  (3e année) donné par <a href="http://pierre-antoine.delnatte.be/">Pierre-Antoine Delnatte</a>.</p>
+<p>Les contraintes sont assez simples :</p>
+<ul>
+<li>Utiliser l&rsquo;API de cash cache.</li>
+<li>Faire le moins de chargement de pages.</li>
+<li>Ne pas copier/coller Cash Cache.</li>
+<li>Afficher au moins 3 vues : la liste des distributeurs, la carte des distributeurs et voir un seul distributeur.</li>
+</ul>
+<p>De ce fait, avec autant de liberté, nous pouvons aller un peu où nous voulons et ceci amènera à un petit cahier des charges ! Mais avant ça, j&rsquo;ai regardé ce que donnait comme information l&rsquo;API !</p>
+<h4>L&rsquo;API</h4>
+<p>Lors d&rsquo;un envoi d&rsquo;une requête de ce genre :</p>
+<p>http://url-de-l-api?latitude=50.633333&amp;longitude=5.566667&amp;radius=10, il nous retourne ceci :</p>
+<p><a class="thumbnail" href="http://localhost/portfolioNW/wp-content/uploads/2014/01/api.jpg"</a><img class="alignnone size-full wp-image-96" alt="A quoi ressemble la réponse de l'API" src="http://localhost/portfolioNW/wp-content/uploads/2014/01/api.jpg" /></a></p>
+<p>Et donc chaque banque contient :</p>
+<ul>
+<li>Id.</li>
+<li>Latitude &lt;- Utile pour la google map.</li>
+<li>Longitude  &lt;- Utile pour la google map.</li>
+<li>Adresse &lt;-Utile à l&rsquo;application.</li>
+<li>Distance  &lt;-Utile à l&rsquo;application.</li>
+<li>Vide ou pas vide &lt;- Utile pour savoir si on doit traité la banque ou pas</li>
+<li>Un objet bank, qui contient des informations sur l&rsquo;agence:</li>
+<li>Id.</li>
+<li>Nom &lt;-Utile à l&rsquo;application.</li>
+<li>Couleur &lt;-Utile à l&rsquo;application</li>
+<li>Logo  &lt;-Utile à l&rsquo;application</li>
+<li>Site web  &lt;-Utile à l&rsquo;application</li>
+</ul>
+<p>En partant de ces données, j&rsquo;ai pu réaliser mon cahier des charges adapté à l&rsquo;API.</p>
+<h4>Cahier des charges</h4>
+<p>Mon cahier des charges contient  un dessin du design de 3 pages : la page de listing des banques, la page de la carte avec les banques et la fiche d&rsquo;une banque avec sa position.<a class="thumbnail" href="http://localhost/portfolioNW/wp-content/uploads/2014/01/BILD0050-e1388747092173.jpg"</a><img class="alignnone size-medium wp-image-99" alt="Maquette papier" src="http://localhost/portfolioNW/wp-content/uploads/2014/01/BILD0050-e1388747092173-225x300.jpg" /></a><a class="thumbnail" href="http://localhost/portfolioNW/wp-content/uploads/2014/01/BILD0051-e1388747154309.jpg"</a><img class="alignnone size-medium wp-image-100" alt="Maquette papier 2" src="http://localhost/portfolioNW/wp-content/uploads/2014/01/BILD0051-e1388747154309-225x300.jpg" /></a></p>
+<p><span style="text-decoration: underline;">Sur la première page, les fonctionnalités sont les suivantes :</span></p>
+<p><a class="thumbnail" href="http://localhost/portfolioNW/wp-content/uploads/2014/01/appImage.jpg"</a><img class="alignnone size-medium wp-image-101" alt="appImage" src="http://localhost/portfolioNW/wp-content/uploads/2014/01/appImage-236x300.jpg" /></a></p>
+<ul>
+<li>La liste des banques par ordre de proximité :</li>
+<li>Nom de la banque avec les couleurs de celle-ci pour mieux distinguer les différentes agences.</li>
+<li>Nombre de mètres entre notre point et la banque (à vol d&rsquo;oiseau) avec la couleur de la banque comme couleur de fond.</li>
+<li>Possibilité de savoir le temps approximatif qu&rsquo;on mettra à pied ou en voiture.</li>
+<li>Possibilité de filtrer les recherches en fonction d&rsquo;une agence.</li>
+<li>Lien vers la carte</li>
+</ul>
+<p><span style="text-decoration: underline;">La deuxième page est très simple:</span></p>
+<p><a class="thumbnail" href="http://localhost/portfolioNW/wp-content/uploads/2014/01/page2.jpg"</a><img class="alignnone size-medium wp-image-102" alt="Page de la carte " src="http://localhost/portfolioNW/wp-content/uploads/2014/01/page2-260x300.jpg" /></a></p>
+<ul>
+<li>Masquer la plupart du contenu de la page 1 pour laisser visible la carte et les banques.</li>
+<li>Lien pour revenir à la liste.</li>
+</ul>
+<p><span style="text-decoration: underline;">Troisième page:</span></p>
+<p><a class="thumbnail" href="http://localhost/portfolioNW/wp-content/uploads/2014/01/page3.jpg"</a><img class="alignnone size-medium wp-image-103" alt="Page d'une banque" src="http://localhost/portfolioNW/wp-content/uploads/2014/01/page3-245x300.jpg" /></a></p>
+<p><span style="text-decoration: underline;">Afficher les informations de la banque après le clic de celle-ci sur la liste ou sur un des markers disposés sur la carte :</span></p>
+<ul>
+<li>Nom de la banque.</li>
+<li>Adresse de la banque.</li>
+<li>Temps à pied/voiture</li>
+<li>Distance en mètres.</li>
+</ul>
+<p><span style="text-decoration: underline;">A propos de la carte:</span></p>
+<ul>
+<li>Centrer la carte sur la position de la personne.</li>
+<li>Afficher les banques sous forme de marker.</li>
+<li>Créer ces markers sur illustrator.</li>
+<li>Afficher la position de la personne via une flèche.</li>
+<li>Créer la flèche sur Illustrator.</li>
+<li>Quand on clique sur le marker d&rsquo;une banque, centrer la carte sur cette banque et masquer les autres.</li>
+</ul>
+<p>Une fois ceci fait, il ne me restait plus qu&rsquo;à commencer à faire le HTML/CSS.</p>
+<h4>Design</h4>
+<p>Etant donné que je n&rsquo;avais encore jamais réalisé d&rsquo;application en tout genre, j&rsquo;ai préféré me baser sur une vraie application, histoire de commencer par le commencement.</p>
+<p>De ce fait,  je me suis inspiré de la vraie application Cash Cache</p>
+<p>J&rsquo;ai utilisé les outils que nous avons vus au cours , <a href="http://compass-style.org">Compass</a>/<a href="http://sass-lang.com/">SASS</a> pour le css, <a href="http://jquery.com">jQuery</a> pour le js et l&rsquo;utilisation de <a href="https://developers.google.com/maps/">l&rsquo;api de google map</a>.</p>
+<p>Mon but premier a été de faire en sorte qu&rsquo;on reconnaisse le plus simplement possible les Agences, en utilisant leur logo et aussi leur couleur.</p>
+<p>Mon second but a été que l&rsquo;application reste simple car des utilisateurs peu habitués aux technologies auront sans doute quelques difficultés avec la google map.</p>
+<p>J&rsquo;ai donc principalement joué sur les couleurs et surtout le contraste entre elles.</p>
+<p>J&rsquo;ai disposé la carte en arrière plan, j&rsquo;ai placé une petite bannière en haut et un petit footer en bas avec des éléments d&rsquo;interaction.</p>
+<p>La partie principale se trouve donc au centre et en avant,  par rapport à la carte dynamique.</p>
+<h4>Javascript</h4>
+<p>Premièrement  j&rsquo;ai initialisé la google map, il m&rsquo;a fallut une <a href="https://developers.google.com/maps/documentation/javascript/tutorial?hl=fr#api_key">clef</a>.</p>
+<p>Une fois initialisée,  j&rsquo;ai fais ma requête <a href="http://fr.wikipedia.org/wiki/Ajax_(informatique)">AJAX</a> vers l&rsquo;api et j&rsquo;ai ensuite listé les banques dans mon HTML.</p>
+<p>La suite est assez classique, utiliser les données, mettre en place certaines choses et ensuite les afficher.</p>
+<p>Etant donné que je n&rsquo;avais pas vraiment compris l&rsquo;API <a href="http://diveintohtml5.info/history.html">History</a> plus tôt dans l&rsquo;année, j&rsquo;ai décidé de l&rsquo;utiliser (même si je ne suis pas sur que ça soit très utile dans le cadre d&rsquo;une application de ce genre).</p>
+<p>J&rsquo; ai rencontré quelques problèmes, mais au final cela fonctionne, sauf quand on rafraîchi la page.</p>
+<p>J&rsquo;ai également rencontré des problèmes lorsque je voulais lier un id des banques affichées aux markers.</p>
+<p>Au final chaque marker est envoyé dans une array. Ils sont disposés dans le même ordre que les banques, ce qui rend assez simple la comparaison pour trouver le marker de la banque.</p>
+<p>J&rsquo;ai essayé de m&rsquo;appliquer au mieux au niveau de la façon de coder, j&rsquo;ai également fait vérifier mon code sur <a href="http://www.jshint.com/">JSHINT</a>.</p>
+<h4>Conclusion</h4>
+<p>Le projet a été réalisé en <a href="https://github.com/julienroland/Cash-Billet/commits/master">4/5 jours</a> dont une demi-journée pour le cahier des charges, la maquette papier de l&rsquo;application plus le design du marker et du logo, une journée pour faire le HTML/CSS et le logo/marker sur Illustrator et le reste pour le JS et les bugs.</p>
+<p>J&rsquo;ai bien apprécié de faire une application web, surtout sur base de Cash Cache qui a été réalisé par notre professeur et donc nous a permis de plus ou moins voir comment il l&rsquo;avait fait.</p>
+<p>J&rsquo;ai bien vu que ce n&rsquo;était pas si facile que ça de designer une app, que je n&rsquo;avais surtout pas l&rsquo;habitude de ce genre de design.</p>
+<p>On trouve souvent des petits bugs tout au long de la création, ce qui nous fait prendre un peu plus de temps que prévu.</p>
+<p>Voici l&rsquo;application <a href="http://cash-cache.be/">Cash Cache</a> et voici ma version nommée <a href="http://julien-roland.be/cashbillet">Cash Billet</a>.</p>
+                
+                <footer class="projetInfos">
+                    <div class="wrapper">
+                        <span class="social"><span>J'aime</span><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fjulien-roland.be&amp;width&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:35px;" allowTransparency="true"></iframe></a></span> 
+                        <span><a href="http://localhost/portfolioNW/wp-content/themes/portfolioN/projet">Revenir aux projets</a></span>
+                    </div>
+                    <div class="wrapper">
+
+                        <span class="previous"></span>
+                        <span class="next"> </span>
+
+                    </div>
+                </footer>
+            </section>
+
+        </section>
+            
+<footer role="contentinfo" class="foot">
+  <h2 aria-level="2" role="heading" class="section">Informations additionnel sur la page</h2>
+  <div class="wrapper">
+    <a class="reader" href="#main" title="Retourner au début du contenu">Remonter au contenu</a>
+    <div class="wrapper sectionContent">
+      <div class="footer link ">
+       <div class="menu-main-container"><ul id="menu-main-1" class="menu"><li><a href="http://localhost/portfolioNW/"title="Aller sur cette page"><span>Accueil</span><i class="logo"></i></a></li>
+<li><a href="http://localhost/portfolioNW/blog/"title="Aller sur cette page"><span>Blog</span><i class="fa fa-comments"></i></a></li>
+<li><a href="http://localhost/portfolioNW/projet/"title="Aller sur cette page"><span>Projets</span><i class="fa fa-folder"></i></a></li>
+<li><a href="http://localhost/portfolioNW/a-propos/"title="Aller sur cette page"><span>A propos</span><i class="fa fa-user"></i></a></li>
+<li><a href="http://localhost/portfolioNW/contact/"title="Aller sur cette page"><span>Contact</span><i class="fa fa-envelope"></i></a></li>
+</ul></div>      </div>
+
+    </div>
+    <div class="wrapper">
+      <div class="lastArticle">
+       <h4 class="titleIndex" aria-level="4" role="heading" >Derniers articles lus</h4>
+       <hr/>
+       <ul>       <li><a href="http://codevisually.com/bootstrap-sass-official-bootstrap-sass-port/" title="Aller sur l'article">Bootstrap Sass</a></li> 
+              <li><a href="http://www.awwwards.com/" title="Aller sur l'article">Inspiration design</a></li> 
+              <li><a href="http://www.lesintegristes.net/2008/12/09/introduction-a-wai-aria-traduction/" title="Aller sur l'article">ARIA en français</a></li> 
+              <li><a href="http://alistapart.com/article/flat-ui-and-forms" title="Aller sur l'article">Form flat design</a></li> 
+       </ul>     </div>
+     <div class="usefull">
+       <h4 aria-level="4" role="heading" class="titleIndex">Liens utiles</h4>
+       <hr/>
+       <ul>       <li><a href="http://webplatformdaily.org/" title="Aller sur le lien">Platform journalière sur le web</a></li>   
+              <li><a href="http://cours-web.net/" title="Aller sur le lien">Workflow Mr.Vilain</a></li>   
+              <li><a href="http://hupkens.be/typs/" title="Aller sur le lien">Modular scale</a></li>   
+              <li><a href="http://gsnedders.html5.org/outliner/" title="Aller sur le lien">Vérifier ses outlines</a></li>   
+       </ul>     </div>
+     <div class="footer reseaux social">
+       <h4 aria-level="4" role="heading" class="titleIndex">Retrouvez moi la-bas !</h4>
+       <hr/>
+       <ul >
+       
+         <li class="linkedin animated bounce"><a href="http://linkedin.com" title="Aller sur ma page Linkedin">Linkedin</a></li>
+         
+       
+         <li class="facebook animated bounce"><a href="http://facebook.com" title="Aller sur ma page Facebook">Facebook</a></li>
+         
+              </ul> 
+     </div>
+     <span class="copyright">
+       Crée par Julien Roland, 2013
+     </span>
+   </div>
+ </div>
+</footer>
+
+
+<script>window.jQuery || document.write('<script src="http://localhost/portfolioNW/wp-content/themes/portfolioN/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+
+
+
+<script>
+  jQuery( function() {
+    jQuery( ' .caption a.thumbnail' ).heplbox();
+    jQuery( ' .listBlog a.thumbnail' ).heplbox();
+    jQuery( ' .projet a.thumbnail' ).heplbox();
+  } );
+
+</script>
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+  e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+  e.src='//www.google-analytics.com/analytics.js';
+  r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+  ga('create','UA-XXXXX-X');ga('send','pageview');
+</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>    </section>
+
+    
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Minified using disk
+Page Caching using disk: enhanced
+Database Caching 11/22 queries in 0.012 seconds using disk
+Object Caching 622/628 objects using disk
+
+ Served from: localhost @ 2014-01-18 14:07:21 by W3 Total Cache -->

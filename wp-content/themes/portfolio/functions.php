@@ -1,37 +1,63 @@
 <?php
         // Translations can be filed in the /languages/ directory
-        load_theme_textdomain( 'html5reset', TEMPLATEPATH . '/languages' );
- 
-        $locale = get_locale();
-        $locale_file = TEMPLATEPATH . "/languages/$locale.php";
-        if ( is_readable($locale_file) )
-            require_once($locale_file);
-	
+load_theme_textdomain( 'html5reset', TEMPLATEPATH . '/languages' );
+
+$locale = get_locale();
+$locale_file = TEMPLATEPATH . "/languages/$locale.php";
+if ( is_readable($locale_file) )
+  require_once($locale_file);
+
 	// Add RSS links to <head> section
-	automatic_feed_links();
-	
+automatic_feed_links();
+
 
     add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video')); // Add 3.1 post format theme support.
 
-/* FOUNDATION NAVIGATION MENU FOR WORDPRESS */
-add_theme_support('menus');
-add_theme_support( 'post-thumbnails');
- 
+    /* FOUNDATION NAVIGATION MENU FOR WORDPRESS */
+    add_theme_support('menus');
+    add_theme_support( 'post-thumbnails');
+
 /*
 http://codex.wordpress.org/Function_Reference/register_nav_menus#Examples
 */
 register_nav_menus(array(
     'top-bar-l' => 'Left Top Bar', // registers the menu in the WordPress admin menu editor
     'top-bar-r' => 'Right Top Bar'
-));
- 
- 
+    ));
+function add_comment_author_to_reply_link($link, $args, $comment){
+
+  $comment = get_comment( $comment );
+
+    // If no comment author is blank, use 'Anonymous'
+  if ( empty($comment->comment_author) ) {
+    if (!empty($comment->user_id)){
+      $user=get_userdata($comment->user_id);
+      $author=$user->user_login;
+    } else {
+      $author = __('Anonymous');
+    }
+  } else {
+    $author = $comment->comment_author;
+  }
+
+    // If the user provided more than a first name, use only first name
+  if(strpos($author, ' ')){
+    $author = substr($author, 0, strpos($author, ' '));
+  }
+
+    // Replace Reply Link with "Reply to &lt;Author First Name>"
+  $reply_link_text = $args['reply_text'];
+  $link = str_replace($reply_link_text, 'Répondre à ' . $author, $link);
+
+  return $link;
+}
+
 /*
 http://codex.wordpress.org/Function_Reference/wp_nav_menu
 */
 // the left top bar
 function foundation_top_bar_l() {
-    wp_nav_menu(array( 
+  wp_nav_menu(array( 
         'container' => false,                           // remove nav container
         'container_class' => 'menu',           			// class of container
         'menu' => '',                      	        	// menu name
@@ -43,13 +69,13 @@ function foundation_top_bar_l() {
         'link_after' => '',                             // after each link text
         'depth' => 5,                                   // limit the depth of the nav
     	'fallback_cb' => false,                         // fallback function (see below)
-        'walker' => new top_bar_walker()
-	));
+      'walker' => new top_bar_walker()
+      ));
 } // end left top bar
- 
+
 // the right top bar
 function foundation_top_bar_r() {
-    wp_nav_menu(array( 
+  wp_nav_menu(array( 
         'container' => false,                           // remove nav container
         'container_class' => '',           				// class of container
         'menu' => '',                      	    	    // menu name
@@ -61,48 +87,49 @@ function foundation_top_bar_r() {
         'link_after' => '',                             // after each link text
         'depth' => 5,                                   // limit the depth of the nav
     	'fallback_cb' => false,                         // fallback function (see below)
-        'walker' => new top_bar_walker()
-	));
+      'walker' => new top_bar_walker()
+      ));
 } // end right top bar
 
 /*
 Customize the output of menus for Foundation top bar classes
 */
- 
+
 class top_bar_walker extends Walker_Nav_Menu {
- 
-    function display_element($element, &$children_elements, $max_depth, $depth=0, $args, &$output) {
-        $element->has_children = !empty($children_elements[$element->ID]);
-        $element->classes[] = ($element->current || $element->current_item_ancestor) ? 'active' : '';
-        $element->classes[] = ($element->has_children) ? 'has-dropdown' : '';
-		
-        parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
+
+  function display_element($element, &$children_elements, $max_depth, $depth=0, $args, &$output) {
+    $element->has_children = !empty($children_elements[$element->ID]);
+    $element->classes[] = ($element->current || $element->current_item_ancestor) ? 'active' : '';
+    $element->classes[] = ($element->has_children) ? 'has-dropdown' : '';
+
+    parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
+  }
+
+  function start_el(&$output, $item, $depth, $args) {
+    $item_html = '';
+    parent::start_el($item_html, $item, $depth, $args);	
+
+    $output .= ($depth == 0) ? '<li class="divider"></li>' : '';
+
+    $classes = empty($item->classes) ? array() : (array) $item->classes;	
+
+    if(in_array('section', $classes)) {
+      $output .= '<li class="divider"></li>';
+      $item_html = preg_replace('/<a[^>]*>(.*)<\/a>/iU', '<label>$1</label>', $item_html);
     }
-	
-    function start_el(&$output, $item, $depth, $args) {
-        $item_html = '';
-        parent::start_el($item_html, $item, $depth, $args);	
-		
-        $output .= ($depth == 0) ? '<li class="divider"></li>' : '';
-		
-        $classes = empty($item->classes) ? array() : (array) $item->classes;	
-		
-        if(in_array('section', $classes)) {
-            $output .= '<li class="divider"></li>';
-            $item_html = preg_replace('/<a[^>]*>(.*)<\/a>/iU', '<label>$1</label>', $item_html);
-        }
-		
-        $output .= $item_html;
-    }
-	
-    function start_lvl(&$output, $depth = 0, $args = array()) {
-        $output .= "\n<ul class=\"sub-menu dropdown\">\n";
-    }
-    
+
+    $output .= $item_html;
+  }
+
+  function start_lvl(&$output, $depth = 0, $args = array()) {
+    $output .= "\n<ul class=\"sub-menu dropdown\">\n";
+  }
+
 } // end top bar walker
 
 /* Remove native crap from wordpress gallery - this makes place for Foundation's "Clearing" plugin (theme script is found in playmaker.js) */
 add_filter( 'use_default_gallery_style', '__return_false' );
+add_filter('comment_reply_link', 'add_comment_author_to_reply_link', 10, 3);
 
 /* Rename Default Post-type */
 
@@ -138,7 +165,7 @@ add_action( 'admin_menu', 'change_post_menu_label' );
 
 
 function custom_breadcrumbs() {
-  
+
   $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
   $delimiter = ''; // delimiter between crumbs
   $home = 'Home'; // text for the 'Home' link
@@ -150,33 +177,33 @@ function custom_breadcrumbs() {
   $homeLink = get_bloginfo('url');
   
   if (is_home() || is_front_page()) {
-  
+
     if ($showOnHome == 1) echo '<ul class="breadcrumbs"><li><a href="' . $homeLink . '">' . $home . '</a></li></ul>';
-  
+
   } else {
-  
+
     echo '<ul class="breadcrumbs"><li><a href="' . $homeLink . '">' . $home . '</a> ' . $delimiter . ' </li>';
-  
+
     if ( is_category() ) {
       $thisCat = get_category(get_query_var('cat'), false);
       if ($thisCat->parent != 0) echo get_category_parents($thisCat->parent, TRUE, ' ' . $delimiter . ' ');
       echo $before . 'Archive by category "' . single_cat_title('', false) . '"' . $after;
-  
+
     } elseif ( is_search() ) {
       echo $before . 'Search results for "' . get_search_query() . '"' . $after;
-  
+
     } elseif ( is_day() ) {
       echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
       echo '<a href="' . get_month_link(get_the_time('Y'),get_the_time('m')) . '">' . get_the_time('F') . '</a> ' . $delimiter . ' ';
       echo $before . get_the_time('d') . $after;
-  
+
     } elseif ( is_month() ) {
       echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
       echo $before . get_the_time('F') . $after;
-  
+
     } elseif ( is_year() ) {
       echo $before . get_the_time('Y') . $after;
-  
+
     } elseif ( is_single() && !is_attachment() ) {
       if ( get_post_type() != 'post' ) {
         $post_type = get_post_type_object(get_post_type());
@@ -190,21 +217,21 @@ function custom_breadcrumbs() {
         
         if ($showCurrent == 1) echo $before . get_the_title() . $after;
       }
-  
+
     } elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
       $post_type = get_post_type_object(get_post_type());
       echo $before . $post_type->labels->singular_name . $after;
-  
+
     } elseif ( is_attachment() ) {
       $parent = get_post($post->post_parent);
       $cat = get_the_category($parent->ID); $cat = $cat[0];
       echo get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
       echo '<a href="' . get_permalink($parent) . '">' . $parent->post_title . '</a>';
       if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
-  
+
     } elseif ( is_page() && !$post->post_parent ) {
       if ($showCurrent == 1) echo $before . get_the_title() . $after;
-  
+
     } elseif ( is_page() && $post->post_parent ) {
       $parent_id  = $post->post_parent;
       $breadcrumbs = array();
@@ -219,28 +246,28 @@ function custom_breadcrumbs() {
         if ($i != count($breadcrumbs)-1) echo ' ' . $delimiter . ' ';
       }
       if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
-  
+
     } elseif ( is_tag() ) {
       echo $before . 'Posts tagged "' . single_tag_title('', false) . '"' . $after;
-  
+
     } elseif ( is_author() ) {
-       global $author;
-      $userdata = get_userdata($author);
-      echo $before . 'Articles posted by ' . $userdata->display_name . $after;
+     global $author;
+     $userdata = get_userdata($author);
+     echo $before . 'Articles posted by ' . $userdata->display_name . $after;
+
+   } elseif ( is_404() ) {
+    echo $before . 'Error 404' . $after;
+  }
   
-    } elseif ( is_404() ) {
-      echo $before . 'Error 404' . $after;
-    }
-  
-    if ( get_query_var('paged') ) {
-      if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ' (';
+  if ( get_query_var('paged') ) {
+    if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ' (';
       echo __('Page') . ' ' . get_query_var('paged');
       if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ')';
-    }
-  
-    echo '</ul>';
-  
-  }
+}
+
+echo '</ul>';
+
+}
 } // end custom_breadcrumbs()
 
 
@@ -253,9 +280,9 @@ function custom_breadcrumbs() {
 // Pagination
 function reverie_pagination() {
   global $wp_query;
- 
+
   $big = 999999999; // This needs to be an unlikely integer
- 
+
   // For more options and info view the docs for paginate_links()
   // http://codex.wordpress.org/Function_Reference/paginate_links
   $paginate_links = paginate_links( array(
@@ -264,11 +291,11 @@ function reverie_pagination() {
     'total' => $wp_query->max_num_pages,
     'mid_size' => 5,
     'prev_next' => True,
-      'prev_text' => __('&laquo;'),
-      'next_text' => __('&raquo;'),
+    'prev_text' => __('&laquo;'),
+    'next_text' => __('&raquo;'),
     'type' => 'list'
-  ) );
- 
+    ) );
+
   // Display the pagination if more than one page is found
   if ( $paginate_links ) {
     echo '<div class="pagination-centered">';
